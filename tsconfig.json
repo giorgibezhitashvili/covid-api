@@ -17,5 +17,12 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
+  },
+  "paths": {
+    "@core/*": [ "./src/core/*" ],
+    "@modules/*": [ "./src/modules/*" ],
+    "@shared/*": [ "./src/module/shared/*" ],
+    "@src/*": ["./src/*"],
+    "@env/*": [ "./env/*" ]
   }
 }
