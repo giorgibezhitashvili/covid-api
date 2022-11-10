@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CountriesModule } from './modules/countries/countries.module';
+import { AuthModule } from './modules/auth/auth.module';
 import 'dotenv/config';
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import 'dotenv/config';
         charset: 'utf8mb4_general_ci',
       },
     }),
+    CountriesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
