@@ -36,7 +36,7 @@ export class AuthService {
         }
         const checkPassword = await this.compareHash(password, user.password);
         if(!checkPassword){
-            throw new UnauthorizedException('email or password is incorrect.');
+            throw new UnauthorizedException('email or password is incorrect');
         }
 
         const payload = { email, id: user.id};

@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import fetch from "node-fetch";
 import { map } from 'rxjs';
 import { Country } from 'src/entities/country.entity';
@@ -25,7 +25,14 @@ export class CountriesService {
     }
 
     async getCountriesFromApi(){
-        return await this.httpService.get(this.countriesApiUrl).toPromise();
+        try{
+            return await this.httpService.get(this.countriesApiUrl).toPromise();
+        }catch (error) { 
+            throw new HttpException({
+            status: HttpStatus.INTERNAL_SERVER_ERROR,
+            error: 'Fetch countries failed',
+          }, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     async getCountries(){

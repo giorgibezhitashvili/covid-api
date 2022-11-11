@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import {Cron, CronExpression} from '@nestjs/schedule';
 import { CountryRepository } from 'src/repositories/country.repository';
 import { StatisticRepository } from 'src/repositories/statistic.repository';
@@ -24,7 +24,14 @@ export class StatisticService {
     }
 
     async getStatisticFromApi(code: string){
-        return await this.httpService.post(this.statisticApiUrl, {code}).toPromise();
+        try{
+            return await this.httpService.post(this.statisticApiUrl, {code}).toPromise();
+        }catch (error) { 
+            throw new HttpException({
+            status: HttpStatus.INTERNAL_SERVER_ERROR,
+            error: 'Fetch statistic failed',
+          }, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     async getStatistic(countryId:number){
