@@ -30,4 +30,8 @@ export class CountryRepository  extends BaseRepository<Country> {
     return await qb.getOne();
   }
 
+  async getCountries(){
+    return await this.createQueryBuilder('c').getMany();
+  }
+
 } 

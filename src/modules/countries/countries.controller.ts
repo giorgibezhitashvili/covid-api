@@ -6,7 +6,7 @@ export class CountriesController {
     constructor(private countriesService: CountriesService) {
       }
     @Get()
-    getCountries(){
-        // return { test:'test'}
+    async getCountries(){
+        return await this.countriesService.getCountries();
     }
 }

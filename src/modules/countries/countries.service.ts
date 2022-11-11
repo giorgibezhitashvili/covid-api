@@ -28,4 +28,7 @@ export class CountriesService {
         return await this.httpService.get(this.countriesApiUrl).toPromise();
     }
 
+    async getCountries(){
+        return await this.countryRepository.getCountries();
+    }
 }

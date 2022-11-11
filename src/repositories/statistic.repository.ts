@@ -21,5 +21,9 @@ export class StatisticRepository  extends BaseRepository<Statistic> {
     return await this.save(statistic);
   }
 
+  async getStatisticByCountry(countryId:number){
+    return await this.createQueryBuilder('s').where('country_id = :countryId', {countryId}).orderBy('created_at', 'DESC').getOne();
+  }
+
 
 } 

@@ -20,10 +20,14 @@ export class StatisticService {
             return false;
         }
         const response = await this.getStatisticFromApi(country.code);
-        await this.statisticRepository.saveStatistic(response.data, country)
+        await this.statisticRepository.saveStatistic(response.data, country);
     }
 
     async getStatisticFromApi(code: string){
         return await this.httpService.post(this.statisticApiUrl, {code}).toPromise();
+    }
+
+    async getStatistic(countryId:number){
+        return await this.statisticRepository.getStatisticByCountry(countryId);
     }
 }
