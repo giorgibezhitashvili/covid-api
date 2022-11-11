@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -5,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CountriesModule } from './modules/countries/countries.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { StatisticModule } from './modules/statistic/statistic.module';
-import 'dotenv/config';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({

@@ -12,7 +12,7 @@ export class UserRepository  extends BaseRepository<User> {
   }
 
   async getUserByEmail(email:string){
-    return await this.createQueryBuilder('u').where('email = :email', { email }).getOne();
+    return await this.createQueryBuilder('u').select(['id','email', 'password','first_name', 'last_name']).where('email = :email', { email }).getRawOne();
   }
 
   async signUp(registrationDto: RegistrationDto){
@@ -29,4 +29,5 @@ export class UserRepository  extends BaseRepository<User> {
   async getUserById(userId){
     return await this.createQueryBuilder('u').where('id = :userId', { userId }).getOne();
   }
+  
 } 
