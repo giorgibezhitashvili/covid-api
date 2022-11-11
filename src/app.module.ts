@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CountriesModule } from './modules/countries/countries.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { StatisticModule } from './modules/statistic/statistic.module';
 import 'dotenv/config';
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import 'dotenv/config';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: ['dist/**/*.entity{.ts,.js}', 'src/**/*.entity.ts'],
+      entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
       logging: false,
       extra: {
@@ -23,6 +24,7 @@ import 'dotenv/config';
     }),
     CountriesModule,
     AuthModule,
+    StatisticModule,
   ],
   controllers: [AppController],
   providers: [AppService],
