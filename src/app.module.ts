@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CountriesModule } from './modules/countries/countries.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { StatisticModule } from './modules/statistic/statistic.module';
+import { CommandModule } from './modules/command/command.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { StatisticModule } from './modules/statistic/statistic.module';
     CountriesModule,
     AuthModule,
     StatisticModule,
+    CommandModule,
   ],
   controllers: [AppController],
   providers: [AppService],
